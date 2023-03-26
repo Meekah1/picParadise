@@ -64,8 +64,6 @@ export default function Header() {
           </HStack>
         </HStack>
         <Flex alignItems={'center'}>
-          {/* <Menu>
-            </Menu> */}
           <Button>
             <Text>Connect Wallet</Text>
           </Button>
