@@ -23,6 +23,7 @@ const NavLink = ({ children }) => (
   <Link
     px={2}
     py={1}
+    as={'b'}
     rounded={'md'}
     _hover={{
       textDecoration: 'none',
@@ -50,7 +51,7 @@ export default function Header() {
         <HStack spacing={8} alignItems={'center'}>
           <Box>
             <Image
-              src='picParadise1.png'
+              src='picParadise.jpg'
               alt='logo'
               height={50}
               width={50}
