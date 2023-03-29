@@ -12,10 +12,10 @@ import {
 } from '@rainbow-me/rainbowkit/wallets';
 import '@rainbow-me/rainbowkit/styles.css';
 import { lightTheme, RainbowKitProvider } from '@rainbow-me/rainbowkit';
-// import ViewPhoto from './component/ViewPhoto';
-// import Footer from './component/Footer';
 import Home from './pages/Home';
 import GeneralPage from './pages/GeneralPage';
+import AddPhoto from './component/AddPhoto';
+import ViewPhoto from './component/ViewPhoto';
 
 const { chains, provider, webSocketProvider } = configureChains(
   [polygonMumbai],
@@ -66,8 +66,8 @@ function App() {
           <Routes>
             <Route path='/Home' element={<Home />} />
             <Route path='/GeneralPage' element={<GeneralPage />} />
-            {/* <Route path='/view' element={<View />} />
-            <Route path='/uploads' element={<Uploads />} /> */}
+            <Route path='/ViewPhoto' element={<ViewPhoto />} />
+            <Route path='/AddPhoto' element={<AddPhoto />} />
           </Routes>
         </BrowserRouter>
       </RainbowKitProvider>

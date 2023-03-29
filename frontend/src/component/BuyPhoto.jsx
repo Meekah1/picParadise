@@ -1,171 +1,173 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useWAGMI } from '@wagmi/react';
-import picParadise from './contracts/picParadise.json';
+// import picParadise from './contracts/picParadise.json';
+import ensRegistryABI from '../artifacts/contracts/picParadise.sol/picParadise.json';
+
 
 const networkName = 'mainnet'; // or "mainnet", "ropsten", etc.
-const contractAddress = '0xfef27a09fa1b13662fd353b9f92738c06441d7af'; // replace with your contract's address
-const contractABI = [
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: 'uint256',
-        name: 'id',
-        type: 'uint256',
-      },
-      {
-        indexed: false,
-        internalType: 'string',
-        name: 'title',
-        type: 'string',
-      },
-      {
-        indexed: false,
-        internalType: 'address',
-        name: 'owner',
-        type: 'address',
-      },
-    ],
-    name: 'PhotoAdded',
-    type: 'event',
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: 'uint256',
-        name: 'id',
-        type: 'uint256',
-      },
-      {
-        indexed: false,
-        internalType: 'string',
-        name: 'title',
-        type: 'string',
-      },
-      {
-        indexed: false,
-        internalType: 'address',
-        name: 'owner',
-        type: 'address',
-      },
-      {
-        indexed: false,
-        internalType: 'uint256',
-        name: 'price',
-        type: 'uint256',
-      },
-    ],
-    name: 'PhotoPurchased',
-    type: 'event',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'string',
-        name: '_title',
-        type: 'string',
-      },
-      {
-        internalType: 'string',
-        name: '_description',
-        type: 'string',
-      },
-      {
-        internalType: 'uint256',
-        name: '_price',
-        type: 'uint256',
-      },
-      {
-        internalType: 'bytes32',
-        name: '_ipfsHash',
-        type: 'bytes32',
-      },
-    ],
-    name: 'addPhoto',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: '',
-        type: 'address',
-      },
-    ],
-    name: 'balances',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: '_id',
-        type: 'uint256',
-      },
-    ],
-    name: 'buyPhoto',
-    outputs: [],
-    stateMutability: 'payable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    name: 'photos',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: 'id',
-        type: 'uint256',
-      },
-      {
-        internalType: 'string',
-        name: 'title',
-        type: 'string',
-      },
-      {
-        internalType: 'string',
-        name: 'description',
-        type: 'string',
-      },
-      {
-        internalType: 'address',
-        name: 'owner',
-        type: 'address',
-      },
-      {
-        internalType: 'uint256',
-        name: 'price',
-        type: 'uint256',
-      },
-      {
-        internalType: 'bytes32',
-        name: 'ipfsHash',
-        type: 'bytes32',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-];
+const contractAddress = '0x9782464d88cd133078E24AddA4C4F265E16b898b'; // replace with your contract's address
+// const contractABI = [
+//   {
+//     anonymous: false,
+//     inputs: [
+//       {
+//         indexed: false,
+//         internalType: 'uint256',
+//         name: 'id',
+//         type: 'uint256',
+//       },
+//       {
+//         indexed: false,
+//         internalType: 'string',
+//         name: 'title',
+//         type: 'string',
+//       },
+//       {
+//         indexed: false,
+//         internalType: 'address',
+//         name: 'owner',
+//         type: 'address',
+//       },
+//     ],
+//     name: 'PhotoAdded',
+//     type: 'event',
+//   },
+//   {
+//     anonymous: false,
+//     inputs: [
+//       {
+//         indexed: false,
+//         internalType: 'uint256',
+//         name: 'id',
+//         type: 'uint256',
+//       },
+//       {
+//         indexed: false,
+//         internalType: 'string',
+//         name: 'title',
+//         type: 'string',
+//       },
+//       {
+//         indexed: false,
+//         internalType: 'address',
+//         name: 'owner',
+//         type: 'address',
+//       },
+//       {
+//         indexed: false,
+//         internalType: 'uint256',
+//         name: 'price',
+//         type: 'uint256',
+//       },
+//     ],
+//     name: 'PhotoPurchased',
+//     type: 'event',
+//   },
+//   {
+//     inputs: [
+//       {
+//         internalType: 'string',
+//         name: '_title',
+//         type: 'string',
+//       },
+//       {
+//         internalType: 'string',
+//         name: '_description',
+//         type: 'string',
+//       },
+//       {
+//         internalType: 'uint256',
+//         name: '_price',
+//         type: 'uint256',
+//       },
+//       {
+//         internalType: 'bytes32',
+//         name: '_ipfsHash',
+//         type: 'bytes32',
+//       },
+//     ],
+//     name: 'addPhoto',
+//     outputs: [],
+//     stateMutability: 'nonpayable',
+//     type: 'function',
+//   },
+//   {
+//     inputs: [
+//       {
+//         internalType: 'address',
+//         name: '',
+//         type: 'address',
+//       },
+//     ],
+//     name: 'balances',
+//     outputs: [
+//       {
+//         internalType: 'uint256',
+//         name: '',
+//         type: 'uint256',
+//       },
+//     ],
+//     stateMutability: 'view',
+//     type: 'function',
+//   },
+//   {
+//     inputs: [
+//       {
+//         internalType: 'uint256',
+//         name: '_id',
+//         type: 'uint256',
+//       },
+//     ],
+//     name: 'buyPhoto',
+//     outputs: [],
+//     stateMutability: 'payable',
+//     type: 'function',
+//   },
+//   {
+//     inputs: [
+//       {
+//         internalType: 'uint256',
+//         name: '',
+//         type: 'uint256',
+//       },
+//     ],
+//     name: 'photos',
+//     outputs: [
+//       {
+//         internalType: 'uint256',
+//         name: 'id',
+//         type: 'uint256',
+//       },
+//       {
+//         internalType: 'string',
+//         name: 'title',
+//         type: 'string',
+//       },
+//       {
+//         internalType: 'string',
+//         name: 'description',
+//         type: 'string',
+//       },
+//       {
+//         internalType: 'address',
+//         name: 'owner',
+//         type: 'address',
+//       },
+//       {
+//         internalType: 'uint256',
+//         name: 'price',
+//         type: 'uint256',
+//       },
+//       {
+//         internalType: 'bytes32',
+//         name: 'ipfsHash',
+//         type: 'bytes32',
+//       },
+//     ],
+//     stateMutability: 'view',
+//     type: 'function',
+//   },
+// ];
 
 function BuyPhoto() {
   const [id, setId] = useState('');
@@ -180,7 +182,7 @@ function BuyPhoto() {
   // );
   const { web3 } = useWAGMI(networkName);
   const contractInstance = useMemo(
-    () => new web3.eth.Contract(picParadise.contractABI, contractAddress),
+    () => new web3.eth.Contract(ensRegistryABI.abi, contractAddress),
     [web3, contractAddress]
   );
 
