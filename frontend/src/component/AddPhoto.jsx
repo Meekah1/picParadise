@@ -5,14 +5,9 @@ import {
   Button,
   Input,
   useToast,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  FormControl,
+  Flex,
   FormLabel,
+  Spacer,
   Textarea,
 } from '@chakra-ui/react';
 import { Buffer } from 'buffer';
@@ -20,7 +15,6 @@ import { create } from 'ipfs-http-client';
 import { useContract, useSigner, useProvider } from 'wagmi';
 import { optimism } from 'wagmi/chains';
 import ensRegistryABI from '../artifacts/contracts/picParadise.sol/picParadise.json';
-
 
 const projectId = '2Nf04C3kIxNtYDBrJBWTpRhZbjG';
 const projectSecret = 'ba10a0b74e50e73ebe2c50f15a10d21a';
@@ -37,16 +31,14 @@ const client = create({
 });
 
 const AddPhoto = () => {
-  const [fileName, setFileName] = useState('');
-  const [file, setFile] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState(null);
 
   const handleFileSelect = (e) => {
-    setFile(e.target.files[0]);
+    setImage(e.target.files[0]);
   };
 
   const toast = useToast();
@@ -60,28 +52,30 @@ const AddPhoto = () => {
       isClosable: true,
     });
 
-const CONTRACT_ADDRESS = '0xfef27a09fa1b13662fd353b9f92738c06441d7af';
+  const CONTRACT_ADDRESS = '0x9782464d88cd133078E24AddA4C4F265E16b898b';
 
-const provider = useProvider();
-const { data: signer } = useSigner({
-  chainId: optimism.id,
-});
+  const provider = useProvider();
+  const { data: signer } = useSigner({
+    chainId: optimism.id,
+  });
 
-const contract = useContract({
-  address: CONTRACT_ADDRESS,
-  abi: ensRegistryABI.abi,
-  signerOrProvider: signer || provider, // use signer if available, else use provider
-});
+  const contract = useContract({
+    address: CONTRACT_ADDRESS,
+    abi: ensRegistryABI.abi,
+    signerOrProvider: signer || provider, // use signer if available, else use provider
+  });
 
   const handleSubmit = async () => {
     try {
-      const created = await client.add(file);
+      const created = await client.addPhoto(image);
       const metadataURI = `https://ipfs.io/ipfs/${created.path}`;
-      await contract.addPhoto(fileName, metadataURI);
+      await contract.addPhoto(title, metadataURI);
       successToast();
 
-      setFile(null);
-      setFileName('');
+      setImage(null);
+      setTitle('');
+      setPrice();
+      setDescription();
     } catch (error) {
       console.error(error);
       // Show error toast
@@ -96,87 +90,93 @@ const contract = useContract({
   };
 
   return (
-    <Box w={'50%'} mx={'auto'} p={'30px'} bg={'gray.200'} as={'form'} mt={10}>
+    <Box
+      isOpen={isOpen}
+      onClick={() => setIsOpen(false)}
+      w={'50%'}
+      mx={'auto'}
+      p={'30px'}
+      bg={'gray.200'}
+      as={'form'}
+      mt={10}
+    >
       <Stack spacing={4}>
+        <FormLabel>Title</FormLabel>
         <Input
-          placeholder='Name of file'
-          value={fileName}
+          w='160px'
+          h='40px'
+          border='1px solid black'
+          placeholder='Name of File'
+          value={title}
           bg={'gray.100'}
-          border={0}
           color={'gray.500'}
           _placeholder={{
             color: 'gray.500',
           }}
-          onChange={(e) => setFileName(e.target.value)}
+          onChange={(e) => setTitle(e.target.value)}
         />
         <Input type='file' color={'gray.800'} onChange={handleFileSelect} />
         <img
           src={
-            file ? URL.createObjectURL(new Blob([file])) : undefined // Use undefined instead of null
+            image ? URL.createObjectURL(new Blob([image])) : undefined // Use undefined instead of null
           }
           alt='doc.'
-          style={{ height: '100px', width: '100px' }}
+          style={{ height: '200px', width: '200px' }}
         />
+        <Flex gap={8}>
+          <Flex direction='column'>
+            <FormLabel>Description</FormLabel>
+            <Textarea
+              w='360px'
+              border='1px solid black'
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder='Enter description'
+            />
+          </Flex>
+          <Flex direction='column'>
+            <FormLabel>Price</FormLabel>
+            <Input
+              w='160px'
+              h='40px'
+              border='1px solid black'
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+              placeholder='Enter price'
+            />
+          </Flex>
+        </Flex>
       </Stack>
-      <Button
-        fontFamily={'heading'}
-        mt={8}
-        w={'full'}
-        onClick={() => setIsOpen(true)}
-        bgGradient='linear(to-r, red.400,pink.400)'
-        color={'white'}
-        _hover={{
-          bgGradient: 'linear(to-r, red.400,pink.400)',
-          boxShadow: 'xl',
-        }}
-      >
-        Upload Photo(s)
-      </Button>
-      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Add New Photo</ModalHeader>
-          <ModalBody>
-            <FormControl>
-              <FormLabel>Title</FormLabel>
-              <Input
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                placeholder='Enter title'
-              />
-            </FormControl>
-            <FormControl mt={4}>
-              <FormLabel>Description</FormLabel>
-              <Textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder='Enter description'
-              />
-            </FormControl>
-            <FormControl mt={4}>
-              <FormLabel>Price</FormLabel>
-              <Input
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
-                placeholder='Enter price'
-              />
-            </FormControl>
-            <FormControl mt={4}>
-              <FormLabel>Image</FormLabel>
-              <Input
-                type='file'
-                onChange={(e) => setImage(e.target.files[0])}
-              />
-            </FormControl>
-          </ModalBody>
-          <ModalFooter>
-            <Button colorScheme='blue' onClick={handleSubmit}>
-              Submit
-            </Button>
-            <Button onClick={() => setIsOpen(false)}>Cancel</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+      <Flex>
+        <Button
+          fontFamily={'heading'}
+          mt={8}
+          w={'44%'}
+          onClick={handleSubmit}
+          bgGradient='linear(to-r, green.400,pink.400)'
+          color={'white'}
+          _hover={{
+            bgGradient: 'linear(to-r, green.400,pink.400)',
+            boxShadow: 'xl',
+          }}
+        >
+          Upload Photo(s)
+        </Button>
+        <Spacer />
+        <Button
+          mt={8}
+          w={'44%'}
+          onClick={() => setIsOpen(false)}
+          bgGradient='linear(to-r, red.400,pink.400)'
+          color={'white'}
+          _hover={{
+            bgGradient: 'linear(to-r, red.400,pink.400)',
+            boxShadow: 'xl',
+          }}
+        >
+          Cancel
+        </Button>
+      </Flex>
     </Box>
   );
 };

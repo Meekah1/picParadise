@@ -1,6 +1,7 @@
 import React from 'react';
-import { Box, Text, Link, Button, Flex, Spacer } from '@chakra-ui/react';
+import { Box, Text, Link, Button, Flex } from '@chakra-ui/react';
 import Header from '../component/Header';
+// import AddPhoto from './../component/AddPhoto';
 
 const GeneralPage = () => {
   const handleViewPhotos = () => {
@@ -32,10 +33,8 @@ const GeneralPage = () => {
           lineHeight='1.0'
           top='40px'
           w={{ base: 300, sm: 500, md: 800 }}
-          // h='100px'
         >
           <Text
-            // as='samp'
             color='black'
             fontWeight={700}
             fontSize={{ base: '2xl', sm: '3xl', md: '5xl' }}
@@ -45,12 +44,14 @@ const GeneralPage = () => {
           </Text>
         </Box>
         <Flex>
-            <Button onClick={handleViewPhotos} m='2'>
-              View Photos
-            </Button>
+          <Button onClick={handleViewPhotos} m='2'>
+            View Photos
+          </Button>
+          <Link href='/AddPhoto'>
             <Button onClick={handleAddPhoto} m='2'>
               Add Photos
             </Button>
+          </Link>
         </Flex>
         <Box left='20px' textAlign='center' position='absolute' bottom='30px'>
           <Link href='/Home'>
