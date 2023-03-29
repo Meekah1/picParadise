@@ -7,6 +7,7 @@ import {
   Flex,
   Heading,
   Image,
+  Link,
   Text,
   useBreakpointValue,
 } from '@chakra-ui/react';
@@ -37,7 +38,7 @@ export default function HeroSection() {
               </Text>
               <br />
               <Text color={'blue.400'} as={'span'}>
-                Design Projects
+                Your one stop store for Uploading, Viewing and Puchasing Amazing Pictures
               </Text>
             </Heading>
             <Text fontSize={{ base: 'md', lg: 'lg' }} color={'gray.500'}>
@@ -45,17 +46,19 @@ export default function HeroSection() {
               perfect for freelancers, agencies, and moonlighters.
             </Text>
             <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
-              <Button
-                rounded={'full'}
-                bg={'blue.400'}
-                color={'white'}
-                _hover={{
-                  bg: 'blue.500',
-                }}
-              >
-                Upload Photo(s)
-              </Button>
-              <Button rounded={'full'}>Buy Photo(s)</Button>
+              <Link href='/GeneralPage' style={{ textDecoration: 'none' }}>
+                <Button
+                  rounded={'full'}
+                  bg={'blue.400'}
+                  color={'white'}
+                  _hover={{
+                    bg: 'blue.500',
+                  }}
+                >
+                  Get Started
+                </Button>
+              </Link>
+              {/* <Button rounded={'full'}>Buy Photo(s)</Button> */}
             </Stack>
           </Stack>
         </Flex>
