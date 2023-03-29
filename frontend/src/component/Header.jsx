@@ -18,7 +18,7 @@ import {
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 
-const Links = ['Upload Photo(s)', 'Buy Photo(s)', 'Team'];
+const Links = ['About Us', 'Privacy', 'Contact'];
 
 const NavLink = ({ children }) => (
   <Link
