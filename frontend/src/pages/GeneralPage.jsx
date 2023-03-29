@@ -44,10 +44,12 @@ const GeneralPage = () => {
           </Text>
         </Box>
         <Flex>
-          <Button onClick={handleViewPhotos} m='2'>
-            View Photos
-          </Button>
-          <Link href='/AddPhoto'>
+          <Link href='/viewPhoto'>
+            <Button onClick={handleViewPhotos} m='2'>
+              View Photos
+            </Button>
+          </Link>
+          <Link href='/addPhoto'>
             <Button onClick={handleAddPhoto} m='2'>
               Add Photos
             </Button>

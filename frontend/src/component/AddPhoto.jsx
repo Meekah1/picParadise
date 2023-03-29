@@ -15,20 +15,7 @@ import { create } from 'ipfs-http-client';
 import { useContract, useSigner, useProvider } from 'wagmi';
 import { optimism } from 'wagmi/chains';
 import ensRegistryABI from '../artifacts/contracts/picParadise.sol/picParadise.json';
-
-const projectId = '2Nf04C3kIxNtYDBrJBWTpRhZbjG';
-const projectSecret = 'ba10a0b74e50e73ebe2c50f15a10d21a';
-const auth =
-  'Basic ' + Buffer(projectId + ':' + projectSecret).toString('base64');
-
-const client = create({
-  host: 'ipfs.infura.io',
-  port: '5001',
-  protocol: 'https',
-  headers: {
-    authorization: auth,
-  },
-});
+import { ethers } from 'ethers';
 
 const AddPhoto = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,6 +23,20 @@ const AddPhoto = () => {
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [image, setImage] = useState(null);
+
+  const projectId = '2Nf04C3kIxNtYDBrJBWTpRhZbjG';
+  const projectSecret = 'ba10a0b74e50e73ebe2c50f15a10d21a';
+  const auth =
+    'Basic ' + Buffer(projectId + ':' + projectSecret).toString('base64');
+
+  const client = create({
+    host: 'ipfs.infura.io',
+    port: '5001',
+    protocol: 'https',
+    headers: {
+      authorization: auth,
+    },
+  });
 
   const handleFileSelect = (e) => {
     setImage(e.target.files[0]);
@@ -48,16 +49,18 @@ const AddPhoto = () => {
       description: 'File has been uploaded successfully',
       position: 'top',
       status: 'success',
-      duration: 9000,
+      duration: 2000,
       isClosable: true,
     });
 
-  const CONTRACT_ADDRESS = '0x9782464d88cd133078E24AddA4C4F265E16b898b';
+  const CONTRACT_ADDRESS = '0x47Fb0D7Acff2004F605550c65cC06818F2BbD116';
 
   const provider = useProvider();
   const { data: signer } = useSigner({
     chainId: optimism.id,
   });
+
+  console.log('signer', signer, '-----');
 
   const contract = useContract({
     address: CONTRACT_ADDRESS,
@@ -66,10 +69,20 @@ const AddPhoto = () => {
   });
 
   const handleSubmit = async () => {
+    console.log(
+      'hdhhgghvygvdyd',
+      ensRegistryABI,
+      ensRegistryABI?.abi,
+      price,
+      description,
+      title
+    );
     try {
-      const created = await client.addPhoto(image);
+      const created = await client.add(image);
       const metadataURI = `https://ipfs.io/ipfs/${created.path}`;
-      await contract.addPhoto(title, metadataURI);
+      const formattedPrice = ethers.utils.parseEther(price.toString());
+
+      await contract.addPhoto(title, formattedPrice, description, metadataURI);
       successToast();
 
       setImage(null);
