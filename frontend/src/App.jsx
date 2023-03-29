@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React from 'react';
 import Header from './component/Header';
 import HeroSection from './component/HeroSection';
 import { WagmiConfig, createClient, configureChains } from 'wagmi';
@@ -42,7 +42,7 @@ const wagmiClient = createClient({
 });
 
 function App() {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
 
   return (
     <WagmiConfig client={wagmiClient}>
