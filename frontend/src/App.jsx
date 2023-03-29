@@ -13,6 +13,7 @@ import {
 } from '@rainbow-me/rainbowkit/wallets';
 import '@rainbow-me/rainbowkit/styles.css';
 import { lightTheme, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import ViewPhoto from './component/ViewPhoto';
 // import Footer from './component/Footer';
 
 const { chains, provider, webSocketProvider } = configureChains(
@@ -63,6 +64,7 @@ function App() {
         <div>
           <Header />
           <HeroSection />
+          <ViewPhoto />
           {/* <Footer /> */}
         </div>
       </RainbowKitProvider>
