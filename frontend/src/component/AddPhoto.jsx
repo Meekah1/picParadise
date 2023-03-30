@@ -17,26 +17,26 @@ import { optimism } from 'wagmi/chains';
 import ensRegistryABI from '../artifacts/contracts/picParadise.sol/picParadise.json';
 import { ethers } from 'ethers';
 
+const projectId = '2Nf04C3kIxNtYDBrJBWTpRhZbjG';
+const projectSecret = 'ba10a0b74e50e73ebe2c50f15a10d21a';
+const auth =
+  'Basic ' + Buffer(projectId + ':' + projectSecret).toString('base64');
+
+const client = create({
+  host: 'ipfs.infura.io',
+  port: '5001',
+  protocol: 'https',
+  headers: {
+    authorization: auth,
+  },
+});
+
 const AddPhoto = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [image, setImage] = useState(null);
-
-  const projectId = '2Nf04C3kIxNtYDBrJBWTpRhZbjG';
-  const projectSecret = 'ba10a0b74e50e73ebe2c50f15a10d21a';
-  const auth =
-    'Basic ' + Buffer(projectId + ':' + projectSecret).toString('base64');
-
-  const client = create({
-    host: 'ipfs.infura.io',
-    port: '5001',
-    protocol: 'https',
-    headers: {
-      authorization: auth,
-    },
-  });
 
   const handleFileSelect = (e) => {
     setImage(e.target.files[0]);
@@ -104,8 +104,8 @@ const AddPhoto = () => {
 
   return (
     <Box
-      isOpen={isOpen}
-      onClick={() => setIsOpen(false)}
+      isOpen={open}
+      onClick={() => setOpen(false)}
       w={'50%'}
       mx={'auto'}
       p={'30px'}
@@ -179,7 +179,7 @@ const AddPhoto = () => {
         <Button
           mt={8}
           w={'44%'}
-          onClick={() => setIsOpen(false)}
+          onClick={() => setOpen(false)}
           bgGradient='linear(to-r, red.400,pink.400)'
           color={'white'}
           _hover={{

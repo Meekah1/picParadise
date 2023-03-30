@@ -64,7 +64,7 @@ function App() {
       >
         <BrowserRouter>
           <Routes>
-            <Route path='/' element={<Home />} />
+            <Route path='/home' element={<Home />} />
             <Route path='/generalPage' element={<GeneralPage />} />
             <Route path='/viewPhoto' element={<ViewPhoto />} />
             <Route path='/addPhoto' element={<AddPhoto />} />
