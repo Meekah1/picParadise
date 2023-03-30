@@ -38,7 +38,8 @@ export default function HeroSection() {
               </Text>
               <br />
               <Text lineHeight='1.0' color={'blue.400'} as={'span'}>
-                Your one stop store for Uploading, Viewing and Puchasing Amazing Pictures
+                Your one stop store for Uploading, Viewing and Puchasing Amazing
+                Pictures
               </Text>
             </Heading>
             {/* <Text fontSize={{ base: 'md', lg: 'lg' }} color={'gray.500'}>
@@ -46,7 +47,7 @@ export default function HeroSection() {
               perfect for freelancers, agencies, and moonlighters.
             </Text> */}
             <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
-              <Link href='/GeneralPage' style={{ textDecoration: 'none' }}>
+              <Link href='/generalPage' style={{ textDecoration: 'none' }}>
                 <Button
                   rounded={'full'}
                   bg={'blue.400'}

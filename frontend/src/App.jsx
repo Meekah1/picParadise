@@ -64,10 +64,10 @@ function App() {
       >
         <BrowserRouter>
           <Routes>
-            <Route path='/Home' element={<Home />} />
-            <Route path='/GeneralPage' element={<GeneralPage />} />
-            <Route path='/ViewPhoto' element={<ViewPhoto />} />
-            <Route path='/AddPhoto' element={<AddPhoto />} />
+            <Route path='/' element={<Home />} />
+            <Route path='/generalPage' element={<GeneralPage />} />
+            <Route path='/viewPhoto' element={<ViewPhoto />} />
+            <Route path='/addPhoto' element={<AddPhoto />} />
           </Routes>
         </BrowserRouter>
       </RainbowKitProvider>
