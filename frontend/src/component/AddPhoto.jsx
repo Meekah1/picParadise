@@ -60,8 +60,6 @@ const AddPhoto = () => {
     chainId: optimism.id,
   });
 
-  console.log('signer', signer, '-----');
-
   const contract = useContract({
     address: CONTRACT_ADDRESS,
     abi: ensRegistryABI.abi,
@@ -69,20 +67,13 @@ const AddPhoto = () => {
   });
 
   const handleSubmit = async () => {
-    console.log(
-      'hdhhgghvygvdyd',
-      ensRegistryABI,
-      ensRegistryABI?.abi,
-      price,
-      description,
-      title
-    );
+    const formattedPrice = ethers.utils.parseEther(price.toString());
+    console.log('hdhhgghvygvdyd', price, formattedPrice, description, title);
     try {
       const created = await client.add(image);
       const metadataURI = `https://ipfs.io/ipfs/${created.path}`;
-      const formattedPrice = ethers.utils.parseEther(price.toString());
 
-      await contract.addPhoto(title, formattedPrice, description, metadataURI);
+      await contract.addPhoto(title, description, formattedPrice, metadataURI);
       successToast();
 
       setImage(null);

@@ -8,13 +8,36 @@ import {
   Heading,
   Image,
   Text,
+  Button,
   Stack,
   useToast,
 } from '@chakra-ui/react';
+import { useContract, useSigner, useProvider } from 'wagmi';
+import { optimism } from 'wagmi/chains';
+import ensRegistryABI from '../artifacts/contracts/picParadise.sol/picParadise.json';
 
-const RecordCard = ({ title, description, price, imageSrc }) => {
+const RecordCard = ({
+  title,
+  description,
+  price,
+  imageSrc,
+  id,
+  owner,
+  contract,
+}) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [fullscreenImageSrc, setFullscreenImageSrc] = useState('');
+
+  const toast = useToast();
+  const successToast = () =>
+    toast({
+      title: 'File Uploaded.',
+      description: 'File has been uploaded successfully',
+      position: 'top',
+      status: 'success',
+      duration: 2000,
+      isClosable: true,
+    });
 
   const handleImageClick = (src) => {
     setIsFullscreen(true);
@@ -25,6 +48,51 @@ const RecordCard = ({ title, description, price, imageSrc }) => {
     setIsFullscreen(false);
     setFullscreenImageSrc('');
   };
+
+  // console.log('dddddddddddd', typeof id);
+
+  const handleBuyPhoto = async () => {
+    console.log('id before parsing:', id);
+    const idAsInt = parseInt(id);
+    console.log('id after parsing:', idAsInt);
+    try {
+      const result = await contract.buyPhoto(parseInt(id), {
+        gasLimit: 100000,
+      });
+      console.log('result', result);
+      successToast();
+    } catch (error) {
+      console.error(error);
+      // Show error toast
+      toast({
+        title: 'Error',
+        description: 'An error occurred while buying the photo.',
+        status: 'error',
+        duration: 2000,
+        isClosable: true,
+      });
+    }
+  };
+
+  // const handleBuyPhoto = async (id) => {
+  //   console.log('qqqid', id);
+  //   try {
+  //     const result = await contract.buyPhoto(id);
+  //     console.log('result', result);
+  //     successToast();
+  //   } catch (error) {
+  //     console.error(error);
+  //     // Show error toast
+  //     toast({
+  //       title: 'Error',
+  //       description: 'An error occurred while getting the file.',
+  //       status: 'error',
+  //       duration: 2000,
+  //       isClosable: true,
+  //     });
+  //   } finally {
+  //   }
+  // };
 
   return (
     <>
@@ -38,10 +106,12 @@ const RecordCard = ({ title, description, price, imageSrc }) => {
             onClick={() => handleImageClick(imageSrc)}
           />
           <Stack mt='6' spacing='3'>
-            <Heading size='md'>{title}</Heading>
-            <Text size='md'>{description}</Text>
-            <Text size='md'>{price}</Text>
+            <Heading size='2xl'>Title: {title}</Heading>
+            <Text size='md'>Description: {description}</Text>
+            <Text size='md'>Owner: {owner}</Text>
+            <Text size='md'>Price: {price / 1000000000000000000}</Text>
           </Stack>
+          <Button onClick={handleBuyPhoto}>Buy</Button>
         </CardBody>
       </Card>
       {isFullscreen && (
@@ -62,20 +132,24 @@ const RecordCard = ({ title, description, price, imageSrc }) => {
   );
 };
 
-const RecordGrid = ({ data }) => {
-  console.log('data', data);
+const RecordGrid = ({ data, contract }) => {
   return (
     <Box w='80%' mx='auto' p='30px' bg='gray.200' mt={10}>
       <Grid templateColumns='repeat(3, 1fr)' gap={3}>
         {data?.map((dat, index) => {
-          console.log('daaaataatatata', dat[1]);
+          console.log('daaaataGrid', dat[0] * 1);
 
           return (
-            <GridItem key={Math.floor(Math.random() * 1000)}>
+            <GridItem key={data[0] * 2}>
               <RecordCard
-                key={`record-${Math.floor(Math.random() * 1000)}`}
-                title={dat[0]}
-                imageSrc={dat[1]}
+                key={data[0] * 2}
+                id={data[0]}
+                title={dat[1]}
+                price={dat[4]}
+                description={dat[2]}
+                imageSrc={dat[5]}
+                owner={dat[3]}
+                contract={contract}
               />
             </GridItem>
           );
@@ -85,20 +159,33 @@ const RecordGrid = ({ data }) => {
   );
 };
 
-const ViewPhoto = ({ contract }) => {
+const ViewPhoto = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const toast = useToast();
   const successToast = () =>
     toast({
-      title: 'Records fetched.',
-      description: 'Records are gotten from the blockchain',
+      title: 'File Uploaded.',
+      description: 'File has been uploaded successfully',
       position: 'top',
       status: 'success',
-      duration: 9000,
+      duration: 2000,
       isClosable: true,
     });
+
+  const CONTRACT_ADDRESS = '0x99c1Ab924a5e33C72F15580b3Ce7d7b47D7D9b08';
+
+  const provider = useProvider();
+  const { data: signer } = useSigner({
+    chainId: optimism.id,
+  });
+
+  const contract = useContract({
+    address: CONTRACT_ADDRESS,
+    abi: ensRegistryABI.abi,
+    signerOrProvider: signer || provider, // use signer if available, else use provider
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -131,7 +218,7 @@ const ViewPhoto = ({ contract }) => {
     }
   }, [isLoading]);
 
-  console.log('data', data);
+  console.log('datatatatatatatat', data[0]);
   return (
     <>
       {isLoading ? (
@@ -147,7 +234,7 @@ const ViewPhoto = ({ contract }) => {
           </Heading>
         </Box>
       ) : (
-        <RecordGrid data={data} />
+        <RecordGrid data={data} contract={contract} />
       )}
     </>
   );
