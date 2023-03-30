@@ -53,7 +53,7 @@ const AddPhoto = () => {
       isClosable: true,
     });
 
-  const CONTRACT_ADDRESS = '0x47Fb0D7Acff2004F605550c65cC06818F2BbD116';
+  const CONTRACT_ADDRESS = '0x99c1Ab924a5e33C72F15580b3Ce7d7b47D7D9b08';
 
   const provider = useProvider();
   const { data: signer } = useSigner({
