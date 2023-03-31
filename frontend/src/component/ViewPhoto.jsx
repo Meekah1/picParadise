@@ -8,13 +8,16 @@ import {
   Heading,
   Image,
   Text,
+  Link,
   Button,
   Stack,
   useToast,
+  Flex,
 } from '@chakra-ui/react';
 import { useContract, useSigner, useProvider } from 'wagmi';
 import { optimism } from 'wagmi/chains';
 import ensRegistryABI from '../artifacts/contracts/picParadise.sol/picParadise.json';
+import Header from './Header';
 
 const RecordCard = ({
   title,
@@ -74,26 +77,6 @@ const RecordCard = ({
     }
   };
 
-  // const handleBuyPhoto = async (id) => {
-  //   console.log('qqqid', id);
-  //   try {
-  //     const result = await contract.buyPhoto(id);
-  //     console.log('result', result);
-  //     successToast();
-  //   } catch (error) {
-  //     console.error(error);
-  //     // Show error toast
-  //     toast({
-  //       title: 'Error',
-  //       description: 'An error occurred while getting the file.',
-  //       status: 'error',
-  //       duration: 2000,
-  //       isClosable: true,
-  //     });
-  //   } finally {
-  //   }
-  // };
-
   return (
     <>
       <Card maxW='sm'>
@@ -134,28 +117,49 @@ const RecordCard = ({
 
 const RecordGrid = ({ data, contract }) => {
   return (
-    <Box w='80%' mx='auto' p='30px' bg='gray.200' mt={10}>
-      <Grid templateColumns='repeat(3, 1fr)' gap={3}>
-        {data?.map((dat, index) => {
-          console.log('daaaataGrid', dat[0] * 1);
+    <>
+      <Header />
+      <Box w='80%' mx='auto' p='30px' bg='gray.200' mt={10}>
+        <Grid templateColumns='repeat(3, 1fr)' gap={3}>
+          {data?.map((dat, index) => {
+            console.log('daaaataGrid', dat[0] * 1);
 
-          return (
-            <GridItem key={data[0] * 2}>
-              <RecordCard
-                key={data[0] * 2}
-                id={data[0]}
-                title={dat[1]}
-                price={dat[4]}
-                description={dat[2]}
-                imageSrc={dat[5]}
-                owner={dat[3]}
-                contract={contract}
-              />
-            </GridItem>
-          );
-        })}
-      </Grid>
-    </Box>
+            return (
+              <GridItem key={data[0] * 2}>
+                <RecordCard
+                  key={data[0] * 2}
+                  id={data[0]}
+                  title={dat[1]}
+                  price={dat[4]}
+                  description={dat[2]}
+                  imageSrc={dat[5]}
+                  owner={dat[3]}
+                  contract={contract}
+                />
+              </GridItem>
+            );
+          })}
+        </Grid>
+        <Flex
+        justifyContent='center'
+        alignItems='center'>
+          <Link href='/generalPage'>
+            <Button
+              alignContent='center'
+              alignItems='center'
+              bgGradient='linear(to-r, red.400,pink.400)'
+              color={'white'}
+              _hover={{
+                bgGradient: 'linear(to-r, red.400,pink.400)',
+                boxShadow: 'xl',
+              }}
+            >
+              Go Back
+            </Button>
+          </Link>
+        </Flex>
+      </Box>
+    </>
   );
 };
 

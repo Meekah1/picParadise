@@ -1,7 +1,6 @@
 import React from 'react';
-import { Box, Text, Link, Button, Flex } from '@chakra-ui/react';
+import { Box, Text, Link, Button, Flex, Spacer } from '@chakra-ui/react';
 import Header from '../component/Header';
-// import AddPhoto from './../component/AddPhoto';
 
 const GeneralPage = () => {
   const handleViewPhotos = () => {
@@ -31,6 +30,7 @@ const GeneralPage = () => {
         <Box
           position='absolute'
           lineHeight='1.0'
+          display='flex'
           top='40px'
           w={{ base: 300, sm: 500, md: 800 }}
         >
@@ -43,23 +43,60 @@ const GeneralPage = () => {
             View, and Buy Using Crypto!
           </Text>
         </Box>
-        <Flex>
-          <Link href='/viewPhoto'>
-            <Button onClick={handleViewPhotos} m='2'>
-              View Photos
-            </Button>
-          </Link>
-          <Link href='/addPhoto'>
-            <Button onClick={handleAddPhoto} m='2'>
-              Add Photos
-            </Button>
-          </Link>
+        <Flex
+          width={{
+            base: 300, // 0-48em
+            md: 500, // 48em-80em,
+            xl: 800, // 80em+
+          }}
+          justifyContent='center'
+          alignItems='center'
+          gap={4}
+        >
+          <Box>
+            <Link href='/viewPhoto'>
+              <Button
+                width={{
+                  base: 160, // 0-48em
+                  md: 240, // 48em-80em,
+                  xl: 400, // 80em+
+                }}
+                bgGradient='linear(to-r, green.400,pink.400)'
+                color={'white'}
+                _hover={{
+                  bgGradient: 'linear(to-r, green.400,pink.400)',
+                  boxShadow: 'xl',
+                }}
+                onClick={handleViewPhotos}
+                // m='2'
+              >
+                View Photos
+              </Button>
+            </Link>
+          </Box>
+          <Spacer />
+          <Box>
+            <Link href='/addPhoto'>
+              <Button
+                width={{
+                  base: 160, // 0-48em
+                  md: 240, // 48em-80em,
+                  xl: 400, // 80em+
+                }}
+                bgGradient='linear(to-r,  red.400,pink.400)'
+                color={'white'}
+                _hover={{
+                  bgGradient: 'linear(to-r,  red.400,pink.400)',
+                  boxShadow: 'xl',
+                }}
+                onClick={handleAddPhoto}
+                // m='2'
+              >
+                Add Photos
+              </Button>
+            </Link>
+          </Box>
         </Flex>
-        <Box left='20px' textAlign='center' position='absolute' bottom='30px'>
-          <Link href='/Home'>
-            <Button m='2'>Go back to home page</Button>
-          </Link>
-        </Box>
       </Box>
     </>
   );

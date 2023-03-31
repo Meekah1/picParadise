@@ -37,7 +37,12 @@ export default function HeroSection() {
                 Picture Paradise
               </Text>
               <br />
-              <Text lineHeight='1.0' color={'blue.400'} as={'span'}>
+              <Text
+                // lineHeight='1.0'
+                lineHeight={1}
+                color={'blue.400'}
+                as={'span'}
+              >
                 Your one stop store for Uploading, Viewing and Puchasing Amazing
                 Pictures
               </Text>
