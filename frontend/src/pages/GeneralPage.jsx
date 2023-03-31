@@ -45,9 +45,9 @@ const GeneralPage = () => {
         </Box>
         <Flex
           width={{
-            base: 300, // 0-48em
-            md: 500, // 48em-80em,
-            xl: 800, // 80em+
+            base: 300,
+            md: 500, 
+            xl: 800,
           }}
           justifyContent='center'
           alignItems='center'
@@ -57,9 +57,9 @@ const GeneralPage = () => {
             <Link href='/viewPhoto'>
               <Button
                 width={{
-                  base: 160, // 0-48em
-                  md: 240, // 48em-80em,
-                  xl: 400, // 80em+
+                  base: 160, 
+                  md: 240, 
+                  xl: 400, 
                 }}
                 bgGradient='linear(to-r, green.400,pink.400)'
                 color={'white'}
@@ -68,7 +68,6 @@ const GeneralPage = () => {
                   boxShadow: 'xl',
                 }}
                 onClick={handleViewPhotos}
-                // m='2'
               >
                 View Photos
               </Button>
@@ -79,9 +78,9 @@ const GeneralPage = () => {
             <Link href='/addPhoto'>
               <Button
                 width={{
-                  base: 160, // 0-48em
-                  md: 240, // 48em-80em,
-                  xl: 400, // 80em+
+                  base: 160, 
+                  md: 240, 
+                  xl: 400, 
                 }}
                 bgGradient='linear(to-r,  red.400,pink.400)'
                 color={'white'}
@@ -90,7 +89,7 @@ const GeneralPage = () => {
                   boxShadow: 'xl',
                 }}
                 onClick={handleAddPhoto}
-                // m='2'
+                
               >
                 Add Photos
               </Button>

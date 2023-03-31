@@ -79,9 +79,10 @@ const RecordCard = ({
 
   return (
     <>
-      <Card maxW='sm'>
-        <CardBody>
+      <Card w={'400px'} justifyItems='center' alignItems='center'>
+        <CardBody w={'400px'} justifyItems='center' alignItems='center'>
           <Image
+            w={'200px'}
             style={{ cursor: 'pointer' }}
             src={imageSrc}
             alt={title}
@@ -89,7 +90,7 @@ const RecordCard = ({
             onClick={() => handleImageClick(imageSrc)}
           />
           <Stack mt='6' spacing='3'>
-            <Heading size='2xl'>Title: {title}</Heading>
+            <Heading size='md'>Title: {title}</Heading>
             <Text size='md'>Description: {description}</Text>
             <Text size='md'>Owner: {owner}</Text>
             <Text size='md'>Price: {price / 1000000000000000000}</Text>
@@ -103,8 +104,7 @@ const RecordCard = ({
           zIndex={9999}
           top={0}
           left={0}
-          width='80%'
-          height='80%'
+          w={'400px'}
           backgroundColor='#fff'
           onClick={handleFullscreenClick}
         >
@@ -119,13 +119,19 @@ const RecordGrid = ({ data, contract }) => {
   return (
     <>
       <Header />
-      <Box w='80%' mx='auto' p='30px' bg='gray.200' mt={10}>
-        <Grid templateColumns='repeat(3, 1fr)' gap={3}>
+      <Box w={'400px'} mx='auto' p='30px' bg='gray.200' mt={10}>
+        <Grid
+          w={'400px'}
+          templateColumns='repeat(3, 1fr)'
+          gap={3}
+          justifyItems='center'
+          alignItems='center'
+        >
           {data?.map((dat, index) => {
             console.log('daaaataGrid', dat[0] * 1);
 
             return (
-              <GridItem key={data[0] * 2}>
+              <GridItem w={'400px'} key={data[0] * 2}>
                 <RecordCard
                   key={data[0] * 2}
                   id={data[0]}
@@ -140,9 +146,7 @@ const RecordGrid = ({ data, contract }) => {
             );
           })}
         </Grid>
-        <Flex
-        justifyContent='center'
-        alignItems='center'>
+        <Flex justifyContent='center' alignItems='center'>
           <Link href='/generalPage'>
             <Button
               alignContent='center'
