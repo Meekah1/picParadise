@@ -12,8 +12,8 @@ import {
 } from '@rainbow-me/rainbowkit/wallets';
 import '@rainbow-me/rainbowkit/styles.css';
 import { lightTheme, RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import Home from './pages/home';
-import GeneralPage from './pages/generalPage';
+import Home from './pages/Home';
+import GeneralPage from './pages/GeneralPage';
 import AddPhoto from './component/AddPhoto';
 import ViewPhoto from './component/ViewPhoto';
 
