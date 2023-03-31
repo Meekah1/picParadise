@@ -20,14 +20,13 @@ import {
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 
-
 // const Links = [
-//   { label: 'About Us', href: '/about-us' },
-//   { label: 'Privacy', href: '/privacy' },
-//   { label: 'Contact', href: '/contact' },
+//   { label: 'About Us', to: '/about-us' },
+//   { label: 'Privacy', to: '/privacy' },
+//   { label: 'Contact', to: '/contact' },
 // ];
 
-// const NavLink = ({ href, children }) => (
+// const NavLink = ({ to, children }) => (
 //   <Link
 //     px={2}
 //     py={1}
@@ -38,7 +37,7 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 //       textDecoration: 'none',
 //       bg: useColorModeValue('gray.200', 'gray.700'),
 //     }}
-//     href={href}
+//     to={to}
 //   >
 //     {children}
 //   </Link>
@@ -46,8 +45,8 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 // const Navigation = () => (
 //   <Stack direction='row' spacing={4}>
-//     {Links.map(({ label, href }) => (
-//       <NavLink key={label} href={href}>
+//     {Links.map(({ label, to }) => (
+//       <NavLink key={label} to={to}>
 //         {label}
 //       </NavLink>
 //     ))}
@@ -56,12 +55,12 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 const Links = ['About Us', 'Privacy', 'Contact'];
 // const Links = [
-//   { label: 'About Us', href: '/aboutUs' },
-//   { label: 'Privacy', href: '/privacy' },
-//   { label: 'Contact', href: '/' },
+//   { label: 'About Us', to: '/aboutUs' },
+//   { label: 'Privacy', to: '/privacy' },
+//   { label: 'Contact', to: '/' },
 // ];
 
-const NavLink = ({ href,  children }) => (
+const NavLink = ({ href, children }) => (
   <Link
     px={2}
     py={1}
@@ -93,15 +92,15 @@ export default function Header() {
         />
         <HStack spacing={8} alignItems={'center'}>
           <Box>
-            <Link href='/'>
-            <Image
-              src='picParadise.jpg'
-              alt='logo'
-              height={50}
-              width={50}
-              borderRadius='24px 0 30px 0'
-            />
-            </Link>
+            <a href='/'>
+              <Image
+                src='picParadise.jpg'
+                alt='logo'
+                height={50}
+                width={50}
+                borderRadius='24px 0 30px 0'
+              />
+            </a>
           </Box>
           <HStack as={'nav'} spacing={4} display={{ base: 'none', md: 'flex' }}>
             {Links.map((link) => (

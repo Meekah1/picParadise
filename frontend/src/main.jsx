@@ -21,7 +21,7 @@
 // );
 
 import { extendTheme, ChakraProvider, ColorModeScript } from '@chakra-ui/react';
-import { BrowserRouter } from 'react-router-dom';
+// import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import App from './App';
@@ -41,11 +41,11 @@ const theme = extendTheme({ colors });
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    {/* <BrowserRouter> */}
       <ColorModeScript />
       <ChakraProvider theme={theme}>
         <App />
       </ChakraProvider>
-    </BrowserRouter>
+    {/* </BrowserRouter> */}
   </React.StrictMode>
 );

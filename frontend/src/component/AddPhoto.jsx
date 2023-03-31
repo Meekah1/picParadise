@@ -6,8 +6,7 @@ import {
   Input,
   useToast,
   Flex,
-  Link,
-  FormLabel,
+ FormLabel,
   Textarea,
 } from '@chakra-ui/react';
 import { Buffer } from 'buffer';
@@ -169,7 +168,7 @@ const AddPhoto = () => {
           >
             Upload Photo(s)
           </Button>
-          <Link href='/generalPage'>
+          <a href='/hero'>
             <Button
               mt={8}
               w={'200px'}
@@ -183,8 +182,8 @@ const AddPhoto = () => {
             >
               Cancel
             </Button>
-          </Link>
-        </Flex>
+          </a>       
+          </Flex>
       </Box>
     </>
   );

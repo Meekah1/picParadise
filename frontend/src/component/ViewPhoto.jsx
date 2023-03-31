@@ -8,7 +8,6 @@ import {
   Heading,
   Image,
   Text,
-  Link,
   Button,
   Stack,
   useToast,
@@ -146,7 +145,7 @@ const RecordGrid = ({ data, contract }) => {
           })}
         </Grid>
         <Flex justifyContent='center' alignItems='center'>
-          <Link href='/generalPage'>
+          <a href='/hero'>
             <Button
               alignContent='center'
               alignItems='center'
@@ -159,7 +158,7 @@ const RecordGrid = ({ data, contract }) => {
             >
               Go Back
             </Button>
-          </Link>
+          </a>
         </Flex>
       </Box>
     </>

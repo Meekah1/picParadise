@@ -52,7 +52,7 @@ export default function HeroSection() {
               perfect for freelancers, agencies, and moonlighters.
             </Text> */}
             <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
-              <Link href='/generalPage' style={{ textDecoration: 'none' }}>
+              <a href='/hero' style={{ textDecoration: 'none' }}>
                 <Button
                   rounded={'full'}
                   bg={'blue.400'}
@@ -63,7 +63,7 @@ export default function HeroSection() {
                 >
                   Get Started
                 </Button>
-              </Link>
+              </a>
               {/* <Button rounded={'full'}>Buy Photo(s)</Button> */}
             </Stack>
           </Stack>

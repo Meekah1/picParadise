@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text, Link, Button, Flex, Spacer } from '@chakra-ui/react';
+import { Box, Text, Button, Flex, Spacer } from '@chakra-ui/react';
 import Header from '../component/Header';
 
 const Hero = () => {
@@ -54,7 +54,7 @@ const Hero = () => {
           gap={4}
         >
           <Box>
-            <Link href='/viewPhoto'>
+            <a href='/viewPhoto'>
               <Button
                 width={{
                   base: 160, 
@@ -71,11 +71,11 @@ const Hero = () => {
               >
                 View Photos
               </Button>
-            </Link>
+            </a>
           </Box>
           <Spacer />
           <Box>
-            <Link href='/addPhoto'>
+            <a href='/addPhoto'>
               <Button
                 width={{
                   base: 160, 
@@ -93,7 +93,7 @@ const Hero = () => {
               >
                 Add Photos
               </Button>
-            </Link>
+            </a>
           </Box>
         </Flex>
       </Box>

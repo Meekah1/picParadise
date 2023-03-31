@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { WagmiConfig, createClient, configureChains } from 'wagmi';
 import { polygonMumbai } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
@@ -62,12 +62,14 @@ function App() {
           overlayBlur: 'small',
         })}
       >
+        <BrowserRouter>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/Hero' exact element={<Hero />} />
             <Route path='/viewPhoto' exact element={<ViewPhoto />} />
             <Route path='/addPhoto' exact element={<AddPhoto />} />
           </Routes>
+        </BrowserRouter>
       </RainbowKitProvider>
     </WagmiConfig>
   );
