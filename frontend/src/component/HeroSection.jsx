@@ -38,13 +38,13 @@ export default function HeroSection() {
               </Text>
               <br />
               <Text
-                // lineHeight='1.0'
-                lineHeight={1}
-                color={'blue.400'}
-                as={'span'}
+                lineHeight={'1.1'}
+                color={'green.600'}
+                fontSize={{ base: '2xl', md: '3xl', lg: '3xl' }}
               >
-                Your one stop store for Uploading, Viewing and Puchasing Amazing
-                Pictures
+                Ensure you connect your wallet using the connect wallet button on
+                the Top Right Corner, before clicking the Get Started Button.
+                See you on the other side!
               </Text>
             </Heading>
             {/* <Text fontSize={{ base: 'md', lg: 'lg' }} color={'gray.500'}>
