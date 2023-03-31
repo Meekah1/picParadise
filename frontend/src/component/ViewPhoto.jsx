@@ -52,7 +52,7 @@ const RecordCard = ({
     setFullscreenImageSrc('');
   };
 
-  // console.log('dddddddddddd', typeof id);
+  // console.log('ddddddddd', typeof id);
 
   const handleBuyPhoto = async () => {
     console.log('id before parsing:', id);
