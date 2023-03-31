@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { WagmiConfig, createClient, configureChains } from 'wagmi';
 import { polygonMumbai } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
@@ -64,7 +64,7 @@ function App() {
           overlayBlur: 'small',
         })}
       >
-        <BrowserRouter>
+      
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/generalPage' element={<GeneralPage />} />
@@ -73,7 +73,7 @@ function App() {
             <Route path='/aboutUs' element={<AboutUs />} />
             <Route path='/privacy' element={<PrivacyPolicy />} />
           </Routes>
-        </BrowserRouter>
+    
       </RainbowKitProvider>
     </WagmiConfig>
   );
