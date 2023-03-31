@@ -12,7 +12,6 @@
 // //   },
 // // });
 
-
 // // ReactDOM.createRoot(document.getElementById('root')).render(
 // //   <React.StrictMode>
 // //     <ChakraBaseProvider theme={theme}>
@@ -21,9 +20,7 @@
 // //   </React.StrictMode>
 // );
 
-
 import { extendTheme, ChakraProvider, ColorModeScript } from '@chakra-ui/react';
-import { BrowserRouter } from 'react-router-dom';
 
 import React from 'react';
 import * as ReactDOM from 'react-dom/client';
@@ -44,11 +41,9 @@ const theme = extendTheme({ colors });
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <ColorModeScript />
-      <ChakraProvider theme={theme}>
-        <App />
-      </ChakraProvider>
-    </BrowserRouter>
+    <ColorModeScript />
+    <ChakraProvider theme={theme}>
+      <App />
+    </ChakraProvider>
   </React.StrictMode>
 );

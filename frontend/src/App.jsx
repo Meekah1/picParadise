@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { WagmiConfig, createClient, configureChains } from 'wagmi';
 import { polygonMumbai } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
@@ -12,12 +12,12 @@ import {
 } from '@rainbow-me/rainbowkit/wallets';
 import '@rainbow-me/rainbowkit/styles.css';
 import { lightTheme, RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import Home from './pages/Home';
-import GeneralPage from './pages/GeneralPage';
+import Home from './pages/home';
+import GeneralPage from './pages/generalPage';
 import AddPhoto from './component/AddPhoto';
 import ViewPhoto from './component/ViewPhoto';
-import AboutUs from './pages/AboutUs';
-import PrivacyPolicy from './pages/Privacy';
+import AboutUs from './pages/aboutUs';
+import PrivacyPolicy from './pages/privacy';
 
 const { chains, provider, webSocketProvider } = configureChains(
   [polygonMumbai],
@@ -64,7 +64,7 @@ function App() {
           overlayBlur: 'small',
         })}
       >
-      
+        <BrowserRouter>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/generalPage' element={<GeneralPage />} />
@@ -73,7 +73,7 @@ function App() {
             <Route path='/aboutUs' element={<AboutUs />} />
             <Route path='/privacy' element={<PrivacyPolicy />} />
           </Routes>
-    
+        </BrowserRouter>
       </RainbowKitProvider>
     </WagmiConfig>
   );
