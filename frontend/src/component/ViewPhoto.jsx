@@ -119,7 +119,7 @@ const RecordGrid = ({ data, contract }) => {
   return (
     <>
       <Header />
-      <Box w={'400px'} mx='auto' p='30px' bg='gray.200' mt={10}>
+      <Box w={'400px'} p='30px' bg='gray.200' mt={10}>
         <Grid
           w={'400px'}
           templateColumns='repeat(3, 1fr)'
@@ -131,9 +131,8 @@ const RecordGrid = ({ data, contract }) => {
             console.log('daaaataGrid', dat[0] * 1);
 
             return (
-              <GridItem w={'400px'} key={data[0] * 2}>
+              <GridItem w={'400px'} key={dat[5]}>
                 <RecordCard
-                  key={data[0] * 2}
                   id={data[0]}
                   title={dat[1]}
                   price={dat[4]}
@@ -146,7 +145,7 @@ const RecordGrid = ({ data, contract }) => {
             );
           })}
         </Grid>
-        <Flex justifyContent='center' alignItems='center'>
+        {/* <Flex justifyContent='center' alignItems='center'>
           <Link href='/generalPage'>
             <Button
               alignContent='center'
@@ -161,7 +160,7 @@ const RecordGrid = ({ data, contract }) => {
               Go Back
             </Button>
           </Link>
-        </Flex>
+        </Flex> */}
       </Box>
     </>
   );
