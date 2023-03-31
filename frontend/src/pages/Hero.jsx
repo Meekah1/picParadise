@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Text, Link, Button, Flex, Spacer } from '@chakra-ui/react';
 import Header from '../component/Header';
 
-const GeneralPage = () => {
+const Hero = () => {
   const handleViewPhotos = () => {
     // Render view photos functionality
     console.log('View Photos clicked!');
@@ -101,4 +101,4 @@ const GeneralPage = () => {
   );
 };
 
-export default GeneralPage;
+export default Hero;

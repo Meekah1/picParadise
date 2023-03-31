@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { WagmiConfig, createClient, configureChains } from 'wagmi';
 import { polygonMumbai } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
@@ -13,7 +13,7 @@ import {
 import '@rainbow-me/rainbowkit/styles.css';
 import { lightTheme, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import Home from './pages/Home';
-import GeneralPage from './pages/GeneralPage';
+import Hero from './pages/Hero';
 import AddPhoto from './component/AddPhoto';
 import ViewPhoto from './component/ViewPhoto';
 
@@ -62,14 +62,12 @@ function App() {
           overlayBlur: 'small',
         })}
       >
-        <BrowserRouter>
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/generalPage' exact element={<GeneralPage />} />
+            <Route path='/Hero' exact element={<Hero />} />
             <Route path='/viewPhoto' exact element={<ViewPhoto />} />
             <Route path='/addPhoto' exact element={<AddPhoto />} />
           </Routes>
-        </BrowserRouter>
       </RainbowKitProvider>
     </WagmiConfig>
   );
