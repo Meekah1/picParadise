@@ -145,7 +145,7 @@ const RecordGrid = ({ data, contract }) => {
             );
           })}
         </Grid>
-        {/* <Flex justifyContent='center' alignItems='center'>
+        <Flex justifyContent='center' alignItems='center'>
           <Link href='/generalPage'>
             <Button
               alignContent='center'
@@ -160,7 +160,7 @@ const RecordGrid = ({ data, contract }) => {
               Go Back
             </Button>
           </Link>
-        </Flex> */}
+        </Flex>
       </Box>
     </>
   );
