@@ -16,8 +16,6 @@ import Home from './pages/home';
 import GeneralPage from './pages/generalPage';
 import AddPhoto from './component/AddPhoto';
 import ViewPhoto from './component/ViewPhoto';
-import AboutUs from './pages/aboutUs';
-import PrivacyPolicy from './pages/privacy';
 
 const { chains, provider, webSocketProvider } = configureChains(
   [polygonMumbai],
@@ -67,11 +65,9 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/generalPage' element={<GeneralPage />} />
-            <Route path='/viewPhoto' element={<ViewPhoto />} />
-            <Route path='/addPhoto' element={<AddPhoto />} />
-            <Route path='/aboutUs' element={<AboutUs />} />
-            <Route path='/privacy' element={<PrivacyPolicy />} />
+            <Route path='/generalPage' exact element={<GeneralPage />} />
+            <Route path='/viewPhoto' exact element={<ViewPhoto />} />
+            <Route path='/addPhoto' exact element={<AddPhoto />} />
           </Routes>
         </BrowserRouter>
       </RainbowKitProvider>

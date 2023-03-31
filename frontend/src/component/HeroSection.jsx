@@ -42,8 +42,8 @@ export default function HeroSection() {
                 color={'green.600'}
                 fontSize={{ base: '2xl', md: '3xl', lg: '3xl' }}
               >
-                Ensure you connect your wallet using the connect wallet button on
-                the Top Right Corner, before clicking the Get Started Button.
+                Ensure you connect your wallet using the connect wallet button
+                on the Top Right Corner, before clicking the Get Started Button.
                 See you on the other side!
               </Text>
             </Heading>
