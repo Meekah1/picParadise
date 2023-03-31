@@ -8,7 +8,6 @@ import {
   Flex,
   Link,
   FormLabel,
-  Spacer,
   Textarea,
 } from '@chakra-ui/react';
 import { Buffer } from 'buffer';
@@ -155,11 +154,11 @@ const AddPhoto = () => {
             </Flex>
           </Flex>
         </Stack>
-        <Flex>
+        <Flex alignItems={'center'} justifyContent={'center'} gap={4}>
           <Button
             fontFamily={'heading'}
             mt={8}
-            w={'44%'}
+            w={'200px'}
             onClick={handleSubmit}
             bgGradient='linear(to-r, green.400,pink.400)'
             color={'white'}
@@ -170,11 +169,10 @@ const AddPhoto = () => {
           >
             Upload Photo(s)
           </Button>
-          <Spacer />
           <Link href='/generalPage'>
             <Button
               mt={8}
-              w={'44%'}
+              w={'200px'}
               onClick={() => setOpen(false)}
               bgGradient='linear(to-r, red.400,pink.400)'
               color={'white'}
