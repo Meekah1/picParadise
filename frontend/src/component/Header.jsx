@@ -20,45 +20,10 @@ import {
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 
-// const Links = [
-//   { label: 'About Us', to: '/about-us' },
-//   { label: 'Privacy', to: '/privacy' },
-//   { label: 'Contact', to: '/contact' },
-// ];
 
-// const NavLink = ({ to, children }) => (
-//   <Link
-//     px={2}
-//     py={1}
-//     as={'b'}
-//     rounded={'md'}
-//     _hover={{
-//       cursor: 'pointer',
-//       textDecoration: 'none',
-//       bg: useColorModeValue('gray.200', 'gray.700'),
-//     }}
-//     to={to}
-//   >
-//     {children}
-//   </Link>
-// );
-
-// const Navigation = () => (
-//   <Stack direction='row' spacing={4}>
-//     {Links.map(({ label, to }) => (
-//       <NavLink key={label} to={to}>
-//         {label}
-//       </NavLink>
-//     ))}
-//   </Stack>
-// );
 
 const Links = ['About Us', 'Privacy', 'Contact'];
-// const Links = [
-//   { label: 'About Us', to: '/aboutUs' },
-//   { label: 'Privacy', to: '/privacy' },
-//   { label: 'Contact', to: '/' },
-// ];
+
 
 const NavLink = ({ href, children }) => (
   <Link

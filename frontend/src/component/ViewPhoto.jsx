@@ -34,7 +34,7 @@ const RecordCard = ({
   const successToast = () =>
     toast({
       title: 'File Uploaded.',
-      description: 'File has been uploaded successfully',
+      description: 'Photo Purchased successfully',
       position: 'top',
       status: 'success',
       duration: 2000,
@@ -76,6 +76,19 @@ const RecordCard = ({
     }
   };
 
+
+  const number = owner;
+
+  // Extract the first 6 and last 6 characters of the number
+  const firstSix = number.slice(0, 6);
+  const lastSix = number.slice(-6);
+
+  // Replace the remaining characters with "..."
+  const middleDots = '…';
+
+  // Combine the parts to form the masked number
+  const maskedNumber = `${firstSix}${middleDots}${lastSix}`;
+
   return (
     <>
       <Card w={'400px'} justifyItems='center' alignItems='center'>
@@ -91,7 +104,7 @@ const RecordCard = ({
           <Stack mt='6' spacing='3'>
             <Heading size='md'>Title: {title}</Heading>
             <Text size='md'>Description: {description}</Text>
-            <Text size='md'>Owner: {owner}</Text>
+            <Text size='md'>Owner: {maskedNumber}</Text>
             <Text size='md'>Price: {price / 1000000000000000000}</Text>
           </Stack>
           <Button onClick={handleBuyPhoto}>Buy</Button>
@@ -115,6 +128,7 @@ const RecordCard = ({
 };
 
 const RecordGrid = ({ data, contract }) => {
+
   return (
     <>
       <Header />
@@ -180,7 +194,7 @@ const ViewPhoto = () => {
       isClosable: true,
     });
 
-  const CONTRACT_ADDRESS = '0x99c1Ab924a5e33C72F15580b3Ce7d7b47D7D9b08';
+  const CONTRACT_ADDRESS = '0x172c4309A7fa6D1AA9ea87Af45c76A2984e8f587';
 
   const provider = useProvider();
   const { data: signer } = useSigner({
@@ -238,6 +252,20 @@ const ViewPhoto = () => {
           <Heading color={'orange.400'} size='md'>
             No records found
           </Heading>
+          <a href='/hero'>
+            <Button
+              alignContent='center'
+              alignItems='center'
+              bgGradient='linear(to-r, red.400,pink.400)'
+              color={'white'}
+              _hover={{
+                bgGradient: 'linear(to-r, red.400,pink.400)',
+                boxShadow: 'xl',
+              }}
+            >
+              Go Back
+            </Button>
+          </a>
         </Box>
       ) : (
         <RecordGrid data={data} contract={contract} />

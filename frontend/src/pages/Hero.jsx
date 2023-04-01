@@ -4,16 +4,7 @@ import Header from '../component/Header';
 import { Link } from 'react-router-dom';
 
 const Hero = () => {
-  // const history = useHistory();
-  // const match = useRouteMatch();
 
-  // const handleViewPhotos = () => {
-  //   history.push(`${match.url}/viewPhoto`);
-  // };
-
-  // const handleAddPhoto = () => {
-  //   history.push(`${match.url}/addPhoto`);
-  // };
 
   return (
     <>
@@ -69,7 +60,6 @@ const Hero = () => {
                 bgGradient: 'linear(to-r, green.400,pink.400)',
                 boxShadow: 'xl',
               }}
-              // onClick={handleViewPhotos}
             >
               View Photos
             </Button>
@@ -90,7 +80,6 @@ const Hero = () => {
                 bgGradient: 'linear(to-r,  red.400,pink.400)',
                 boxShadow: 'xl',
               }}
-              // onClick={(e) => history.push('/addPhoto')}
             >
               Add Photos
             </Button>
