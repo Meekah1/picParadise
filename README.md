@@ -1,4 +1,6 @@
-PicParadise
+*PicParadise*
+
+
 PicParadise is a decentralized photo app that allows users to upload, view, and buy(Optional) pictures using blockchain technology. This app is built on the Ethereum blockchain and uses smart contracts to securely manage the uploading, viewing, buying(optional) and selling(optional) of pictures. NB: PicParadise sole purpose is mainly to allow users have a decentralized storage for their photo(s) without the fear of anyone having access to it and also with buy option
 
 Features
@@ -22,12 +24,11 @@ PicParadise is an open-source project, and contributions are always welcome! The
 
 bash
 Copy code
-git clone https://github.com/picparadise/picparadise.git
+git clone https://github.com/Meekah1/picParadise.git
 cd picparadise
 npm install
 You can then run the app locally using:
 
-sql
 Copy code
 npm start
 License
