@@ -1,5 +1,5 @@
 import React from 'react';
-// import BuyPhoto from './BuyPhoto';
+
 import {
   Box,
   Stack,
@@ -7,12 +7,14 @@ import {
   Flex,
   Heading,
   Image,
-  // Link,
+  Link,
   Text,
   useBreakpointValue,
 } from '@chakra-ui/react';
+import { useAccount } from 'wagmi';
 
 export default function HeroSection() {
+  const { isConnected } = useAccount();
   return (
     <Box>
       <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
@@ -47,24 +49,21 @@ export default function HeroSection() {
                 See you on the other side!
               </Text>
             </Heading>
-            {/* <Text fontSize={{ base: 'md', lg: 'lg' }} color={'gray.500'}>
-              The project board is an exclusive resource for contract work. It's
-              perfect for freelancers, agencies, and moonlighters.
-            </Text> */}
             <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
-              <a href='/hero' style={{ textDecoration: 'none' }}>
+              <Link href='/hero' style={{ textDecoration: 'none' }}>
                 <Button
                   rounded={'full'}
-                  bg={'blue.400'}
                   color={'white'}
+                  bg={!isConnected ? 'gray.400' : 'blue.400'}
+                  disabled={!isConnected}
+                  cursor={!isConnected ? 'not-allowed' : 'pointer'}
                   _hover={{
                     bg: 'blue.500',
                   }}
                 >
                   Get Started
                 </Button>
-              </a>
-              {/* <Button rounded={'full'}>Buy Photo(s)</Button> */}
+              </Link>
             </Stack>
           </Stack>
         </Flex>
