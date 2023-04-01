@@ -1,23 +1,25 @@
 import React from 'react';
 import { Box, Text, Button, Flex, Spacer } from '@chakra-ui/react';
 import Header from '../component/Header';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
-  const handleViewPhotos = () => {
-    // Render view photos functionality
-    console.log('View Photos clicked!');
-  };
+  // const history = useHistory();
+  // const match = useRouteMatch();
 
-  const handleAddPhoto = () => {
-    // Render add photo functionality
-    console.log('Add Photo clicked!');
-  };
+  // const handleViewPhotos = () => {
+  //   history.push(`${match.url}/viewPhoto`);
+  // };
+
+  // const handleAddPhoto = () => {
+  //   history.push(`${match.url}/addPhoto`);
+  // };
 
   return (
     <>
       <Header />
       <Box
-        bgImage="url('crypto.jpg')"
+        bgImage={`url('crypto.jpg')`}
         bgSize='cover'
         bgPosition='center'
         height='100vh'
@@ -39,14 +41,14 @@ const Hero = () => {
             fontWeight={700}
             fontSize={{ base: '2xl', sm: '3xl', md: '5xl' }}
           >
-            Experience a world of endless Photos with the ability to Upload,
+            Experience Link world of endless Photos with the ability to Upload,
             View, and Buy Using Crypto!
           </Text>
         </Box>
         <Flex
           width={{
             base: 300,
-            md: 500, 
+            md: 500,
             xl: 800,
           }}
           justifyContent='center'
@@ -54,46 +56,45 @@ const Hero = () => {
           gap={4}
         >
           <Box>
-            <a href='/viewPhoto'>
-              <Button
-                width={{
-                  base: 160, 
-                  md: 240, 
-                  xl: 400, 
-                }}
-                bgGradient='linear(to-r, green.400,pink.400)'
-                color={'white'}
-                _hover={{
-                  bgGradient: 'linear(to-r, green.400,pink.400)',
-                  boxShadow: 'xl',
-                }}
-                onClick={handleViewPhotos}
-              >
-                View Photos
-              </Button>
-            </a>
+            <Link to='/viewPhoto'>
+            <Button
+              width={{
+                base: 160,
+                md: 240,
+                xl: 400,
+              }}
+              bgGradient='linear(to-r, green.400,pink.400)'
+              color={'white'}
+              _hover={{
+                bgGradient: 'linear(to-r, green.400,pink.400)',
+                boxShadow: 'xl',
+              }}
+              // onClick={handleViewPhotos}
+            >
+              View Photos
+            </Button>
+            </Link>
           </Box>
           <Spacer />
           <Box>
-            <a href='/addPhoto'>
-              <Button
-                width={{
-                  base: 160, 
-                  md: 240, 
-                  xl: 400, 
-                }}
-                bgGradient='linear(to-r,  red.400,pink.400)'
-                color={'white'}
-                _hover={{
-                  bgGradient: 'linear(to-r,  red.400,pink.400)',
-                  boxShadow: 'xl',
-                }}
-                onClick={handleAddPhoto}
-                
-              >
-                Add Photos
-              </Button>
-            </a>
+            <Link to='/addPhoto'>
+            <Button
+              width={{
+                base: 160,
+                md: 240,
+                xl: 400,
+              }}
+              bgGradient='linear(to-r,  red.400,pink.400)'
+              color={'white'}
+              _hover={{
+                bgGradient: 'linear(to-r,  red.400,pink.400)',
+                boxShadow: 'xl',
+              }}
+              // onClick={(e) => history.push('/addPhoto')}
+            >
+              Add Photos
+            </Button>
+            </Link>
           </Box>
         </Flex>
       </Box>

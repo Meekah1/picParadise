@@ -7,7 +7,7 @@ import {
   Flex,
   Heading,
   Image,
-  Link,
+  // Link,
   Text,
   useBreakpointValue,
 } from '@chakra-ui/react';

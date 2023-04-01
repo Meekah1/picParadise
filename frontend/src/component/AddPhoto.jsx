@@ -32,7 +32,7 @@ const client = create({
 });
 
 const AddPhoto = () => {
-  const [open, setOpen] = useState();
+  // const [open, setOpen] = useState();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
@@ -97,8 +97,8 @@ const AddPhoto = () => {
     <>
       <Header />
       <Box
-        isOpen={open}
-        onClick={() => setOpen(false)}
+        // isOpen={open}
+        // onClick={() => setOpen(false)}
         w={'50%'}
         mx={'auto'}
         p={'30px'}
@@ -172,7 +172,7 @@ const AddPhoto = () => {
             <Button
               mt={8}
               w={'200px'}
-              onClick={() => setOpen(false)}
+              // onClick={() => setOpen(false)}
               bgGradient='linear(to-r, red.400,pink.400)'
               color={'white'}
               _hover={{
