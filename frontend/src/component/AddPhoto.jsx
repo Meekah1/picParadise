@@ -67,11 +67,11 @@ const AddPhoto = () => {
   });
 
   const handleSubmit = async () => {
-    const formattedPrice = ethers.utils.parseEther(price.toString());
-    console.log('hdhhgghvygvdyd', price, formattedPrice, description, title);
     try {
       const created = await client.add(image);
       const metadataURI = `https://ipfs.io/ipfs/${created.path}`;
+      const formattedPrice = ethers.utils.parseEther(price.toString());
+      console.log('hdhhgghvygvdyd', price, formattedPrice, description, title);
 
       await contract.addPhoto(title, description, formattedPrice, metadataURI);
       successToast();
