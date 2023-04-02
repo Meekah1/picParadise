@@ -6,7 +6,7 @@ import {
   Input,
   useToast,
   Flex,
- FormLabel,
+  FormLabel,
   Textarea,
 } from '@chakra-ui/react';
 import { Buffer } from 'buffer';
@@ -67,11 +67,11 @@ const AddPhoto = () => {
   });
 
   const handleSubmit = async () => {
-    const formattedPrice = ethers.utils.parseEther(price.toString());
-    console.log('hdhhgghvygvdyd', price, formattedPrice, description, title);
     try {
       const created = await client.add(image);
       const metadataURI = `https://ipfs.io/ipfs/${created.path}`;
+      const formattedPrice = ethers.utils.parseEther(price.toString());
+      console.log('hdhhgghvygvdyd', price, formattedPrice, description, title);
 
       await contract.addPhoto(title, description, formattedPrice, metadataURI);
       successToast();
@@ -97,14 +97,7 @@ const AddPhoto = () => {
   return (
     <>
       <Header />
-      <Box
-        w={'50%'}
-        mx={'auto'}
-        p={'30px'}
-        bg={'gray.200'}
-        as={'form'}
-        mt={10}
-      >
+      <Box w={'50%'} mx={'auto'} p={'30px'} bg={'gray.200'} as={'form'} mt={10}>
         <Stack spacing={4}>
           <FormLabel>Title</FormLabel>
           <Input
@@ -132,14 +125,14 @@ const AddPhoto = () => {
             <Flex direction='column'>
               <FormLabel>Description</FormLabel>
               <Textarea
-                w='360px'
+                w={{ base: 200, md: 360, xl: 520 }}
                 border='1px solid black'
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder='Enter description'
               />
             </Flex>
-            <Flex direction='column'>
+            {/* <Flex direction='column'>
               <FormLabel>Price</FormLabel>
               <Input
                 w='160px'
@@ -149,7 +142,7 @@ const AddPhoto = () => {
                 onChange={(e) => setPrice(e.target.value)}
                 placeholder='Enter price'
               />
-            </Flex>
+            </Flex> */}
           </Flex>
         </Stack>
         <Flex alignItems={'center'} justifyContent={'center'} gap={4}>
@@ -180,8 +173,8 @@ const AddPhoto = () => {
             >
               Cancel
             </Button>
-          </a>       
-          </Flex>
+          </a>
+        </Flex>
       </Box>
     </>
   );

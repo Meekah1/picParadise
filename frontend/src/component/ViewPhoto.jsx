@@ -109,9 +109,9 @@ const RecordCard = ({
             <Heading size='md'>Title: {title}</Heading>
             <Text size='md'>Description: {description}</Text>
             <Text size='md'>Owner: {maskedNumber}</Text>
-            <Text size='md'>Price: {price / 1000000000000000000}</Text>
+            {/* <Text size='md'>Price: {price / 1000000000000000000}</Text> */}
           </Stack>
-          <Button onClick={handleBuyPhoto}>Buy</Button>
+          {/* <Button onClick={handleBuyPhoto}>Buy</Button> */}
         </CardBody>
       </Card>
       {isFullscreen && (
