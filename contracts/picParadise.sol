@@ -72,6 +72,10 @@ contract picParadise {
         // Transfer ownership of the photo to the buyer
         photo.owner = msg.sender;
 
+        //Update the photo object in storage with the new owner's address
+        photos[_id] = photo;
+
+
         // Emit an event to notify that the photo has been bought
         emit PhotoPurchased(_id, photo.title, photo.owner, photo.price);
     }
