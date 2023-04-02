@@ -125,31 +125,31 @@ const AddPhoto = () => {
             <Flex direction='column'>
               <FormLabel>Description</FormLabel>
               <Textarea
-                w={{ base: 200, md: 360, xl: 520 }}
+                w={{ base: 100, md: 260, xl: 320 }}
                 border='1px solid black'
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder='Enter description'
               />
             </Flex>
-            {/* <Flex direction='column'>
+            <Flex direction='column'>
               <FormLabel>Price</FormLabel>
               <Input
-                w='160px'
-                h='40px'
+                w={{ base: 60, md: 60 }}
+                // h='40px'
                 border='1px solid black'
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
                 placeholder='Enter price'
               />
-            </Flex> */}
+            </Flex>
           </Flex>
         </Stack>
         <Flex alignItems={'center'} justifyContent={'center'} gap={4}>
           <Button
             fontFamily={'heading'}
             mt={8}
-            w={'200px'}
+            w={{ base: 60, md: 100, xl: 200 }}
             onClick={handleSubmit}
             bgGradient='linear(to-r, green.400,pink.400)'
             color={'white'}
@@ -163,7 +163,7 @@ const AddPhoto = () => {
           <a href='/hero'>
             <Button
               mt={8}
-              w={'200px'}
+              w={{ base: 60, md: 100, xl: 200 }}
               bgGradient='linear(to-r, red.400,pink.400)'
               color={'white'}
               _hover={{
