@@ -36,6 +36,7 @@ const AddPhoto = () => {
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [image, setImage] = useState(null);
+  // const [imageOwner, setImageOwner] = useState('');
 
   const handleFileSelect = (e) => {
     setImage(e.target.files[0]);
@@ -79,6 +80,7 @@ const AddPhoto = () => {
       setTitle('');
       setPrice();
       setDescription();
+      // setImageOwner();
     } catch (error) {
       console.error(error);
       // Show error toast
