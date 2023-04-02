@@ -88,7 +88,7 @@ const AddPhoto = () => {
         title: 'Error',
         description: 'An error occurred while uploading the file.',
         status: 'error',
-        duration: 5000,
+        duration: 3000,
         isClosable: true,
       });
     }
