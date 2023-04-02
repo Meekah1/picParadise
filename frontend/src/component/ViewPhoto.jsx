@@ -17,7 +17,6 @@ import { useContract, useSigner, useProvider } from 'wagmi';
 import { optimism } from 'wagmi/chains';
 import ensRegistryABI from '../artifacts/contracts/picParadise.sol/picParadise.json';
 import Header from './Header';
-import { useAccount } from 'wagmi';
 
 const RecordCard = ({
   title,
@@ -32,7 +31,6 @@ const RecordCard = ({
   const [fullscreenImageSrc, setFullscreenImageSrc] = useState('');
   // const [currentOwner, setCurrentOwner] = useState(maskedNumber);
 
-  // const { address } = useAccount();
 
   const toast = useToast();
   const successToast = () =>
@@ -55,7 +53,6 @@ const RecordCard = ({
     setFullscreenImageSrc('');
   };
 
-  // console.log('ddddddddd', typeof id);
 
   const handleBuyPhoto = async () => {
     console.log('id before parsing:', id);
@@ -65,7 +62,7 @@ const RecordCard = ({
       const result = await contract.buyPhoto(parseInt(id), {
         gasLimit: 100000,
       });
-
+   console.log('result', result);
       // setCurrentOwner(address);
 
       console.log('result', result);
