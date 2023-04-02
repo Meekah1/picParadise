@@ -30,9 +30,9 @@ const RecordCard = ({
 }) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [fullscreenImageSrc, setFullscreenImageSrc] = useState('');
-  const [currentOwner, setCurrentOwner] = useState(maskedNumber);
+  // const [currentOwner, setCurrentOwner] = useState(maskedNumber);
 
-  const { address } = useAccount();
+  // const { address } = useAccount();
 
   const toast = useToast();
   const successToast = () =>
@@ -65,8 +65,8 @@ const RecordCard = ({
       const result = await contract.buyPhoto(parseInt(id), {
         gasLimit: 100000,
       });
-      
-      setCurrentOwner(address);
+
+      // setCurrentOwner(address);
 
       console.log('result', result);
 
@@ -83,7 +83,6 @@ const RecordCard = ({
       });
     }
   };
-
 
   const number = owner;
 
@@ -112,7 +111,7 @@ const RecordCard = ({
           <Stack mt='6' spacing='3'>
             <Heading size='md'>Title: {title}</Heading>
             <Text size='md'>Description: {description}</Text>
-            <Text size='md'>Owner: {currentOwner}</Text>
+            <Text size='md'>Owner: {maskedNumber}</Text>
             <Text size='md'>Price: {price / 1000000000000000000}</Text>
           </Stack>
           <Button onClick={handleBuyPhoto}>Buy</Button>
@@ -136,7 +135,6 @@ const RecordCard = ({
 };
 
 const RecordGrid = ({ data, contract }) => {
-
   return (
     <>
       <Header />
