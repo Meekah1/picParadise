@@ -19,13 +19,15 @@ import {
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+// import { Link } from 'react-router-dom';
 
+const Links = [
+  { title: 'About Us', url: '/aboutUs' },
+  { title: 'Privacy', url: '/privacy' },
+  { title: 'Contact', url: '/' },
+];
 
-
-const Links = ['About Us', 'Privacy', 'Contact'];
-
-
-const NavLink = ({ href, children }) => (
+const NavLink = ({ url, children }) => (
   <Link
     px={2}
     py={1}
@@ -36,7 +38,7 @@ const NavLink = ({ href, children }) => (
       textDecoration: 'none',
       bg: useColorModeValue('gray.200', 'gray.700'),
     }}
-    href={href}
+    href={url}
   >
     {children}
   </Link>
@@ -69,7 +71,9 @@ export default function Header() {
           </Box>
           <HStack as={'nav'} spacing={4} display={{ base: 'none', md: 'flex' }}>
             {Links.map((link) => (
-              <NavLink key={link}>{link}</NavLink>
+              <NavLink key={link.title}  >
+                {link.title}
+              </NavLink>
             ))}
           </HStack>
         </HStack>
@@ -81,7 +85,9 @@ export default function Header() {
         <Box pb={4} display={{ md: 'none' }}>
           <Stack as={'nav'} spacing={4}>
             {Links.map((link) => (
-              <NavLink key={link}>{link}</NavLink>
+              <NavLink   key={link.title} url={link.url}>
+                {link.title}
+              </NavLink>
             ))}
           </Stack>
         </Box>

@@ -31,7 +31,6 @@ const RecordCard = ({
   const [fullscreenImageSrc, setFullscreenImageSrc] = useState('');
   // const [currentOwner, setCurrentOwner] = useState(maskedNumber);
 
-
   const toast = useToast();
   const successToast = () =>
     toast({
@@ -53,7 +52,6 @@ const RecordCard = ({
     setFullscreenImageSrc('');
   };
 
-
   const handleBuyPhoto = async () => {
     console.log('id before parsing:', id);
     const idAsInt = parseInt(id);
@@ -62,7 +60,7 @@ const RecordCard = ({
       const result = await contract.buyPhoto(parseInt(id), {
         gasLimit: 100000,
       });
-   console.log('result', result);
+      console.log('result', result);
       // setCurrentOwner(address);
 
       console.log('result', result);
@@ -95,10 +93,18 @@ const RecordCard = ({
 
   return (
     <>
-      <Card w={'400px'} justifyItems='center' alignItems='center'>
-        <CardBody w={'400px'} justifyItems='center' alignItems='center'>
+      <Card
+        w={{ sm: '200px', md: '250px', lg: '400px' }}
+        justifyItems='center'
+        alignItems='center'
+      >
+        <CardBody
+          w={{ sm: '200px', md: '250px', lg: '400px' }}
+          justifyItems='center'
+          alignItems='center'
+        >
           <Image
-            w={'200px'}
+            w={{ sm: '200px', md: '250px', lg: '400px' }}
             style={{ cursor: 'pointer' }}
             src={imageSrc}
             alt={title}
@@ -106,9 +112,15 @@ const RecordCard = ({
             onClick={() => handleImageClick(imageSrc)}
           />
           <Stack mt='6' spacing='3'>
-            <Heading size='md'>Title: {title}</Heading>
-            <Text size='md'>Description: {description}</Text>
-            <Text size='md'>Owner: {maskedNumber}</Text>
+            <Heading size={{ base: '16px', md: '34px', lg: '56px' }}>
+              Title: {title}
+            </Heading>
+            <Text size={{ base: '16px', md: '34px', lg: '56px' }}>
+              Description: {description}
+            </Text>
+            <Text size={{ base: '16px', md: '34px', lg: '56px' }}>
+              Owner: {maskedNumber}
+            </Text>
             {/* <Text size='md'>Price: {price / 1000000000000000000}</Text> */}
           </Stack>
           {/* <Button onClick={handleBuyPhoto}>Buy</Button> */}
@@ -120,7 +132,7 @@ const RecordCard = ({
           zIndex={9999}
           top={0}
           left={0}
-          w={'400px'}
+          w={{ sm: '200px', md: '250px', lg: '400px' }}
           backgroundColor='#fff'
           onClick={handleFullscreenClick}
         >
@@ -135,11 +147,16 @@ const RecordGrid = ({ data, contract }) => {
   return (
     <>
       <Header />
-      <Box w={'400px'} p='30px' bg='gray.200' mt={10}>
+      <Box
+        w={{ sm: '200px', md: '250px', lg: '400px' }}
+        p='20px'
+        bg='gray.200'
+        mt={10}
+      >
         <Grid
-          w={'400px'}
+          w={{ sm: '200px', md: '250px', lg: '400px' }}
           templateColumns='repeat(3, 1fr)'
-          gap={3}
+          gap={2}
           justifyItems='center'
           alignItems='center'
         >
@@ -147,7 +164,10 @@ const RecordGrid = ({ data, contract }) => {
             console.log('daaaataGrid', dat[0] * 1);
 
             return (
-              <GridItem w={'400px'} key={dat[5]}>
+              <GridItem
+                w={{ sm: '200px', md: '250px', lg: '400px' }}
+                key={dat[5]}
+              >
                 <RecordCard
                   id={data[0]}
                   title={dat[1]}
@@ -233,7 +253,7 @@ const ViewPhoto = () => {
     };
 
     fetchData();
-  }, []);
+  }, [contract, toast]);
 
   useEffect(() => {
     if (!isLoading) {

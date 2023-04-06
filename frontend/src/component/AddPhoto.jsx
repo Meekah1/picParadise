@@ -97,7 +97,14 @@ const AddPhoto = () => {
   return (
     <>
       <Header />
-      <Box w={'50%'} mx={'auto'} p={'30px'} bg={'gray.200'} as={'form'} mt={10}>
+      <Box
+        w={{ sm: '240px', md: '360px', lg: '500px' }}
+        mx={'auto'}
+        p={'20px'}
+        bg={'gray.200'}
+        as={'form'}
+        mt={10}
+      >
         <Stack spacing={4}>
           <FormLabel>Title</FormLabel>
           <Input
@@ -121,11 +128,11 @@ const AddPhoto = () => {
             alt='doc.'
             style={{ height: '200px', width: '200px' }}
           />
-          <Flex gap={8}>
+          <Flex gap={4}>
             <Flex direction='column'>
               <FormLabel>Description</FormLabel>
               <Textarea
-                w={{ base: 100, md: 260, xl: 320 }}
+                w={{ base: '100px', md: '200px', lg: '300px' }}
                 border='1px solid black'
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
@@ -135,7 +142,7 @@ const AddPhoto = () => {
             <Flex direction='column'>
               <FormLabel>Price</FormLabel>
               <Input
-                w={{ base: 60, md: 60 }}
+                w={{ base: '100px', md: '160px', lg: '200px' }}
                 // h='40px'
                 border='1px solid black'
                 value={price}
