@@ -1,4 +1,4 @@
-Smart Cintract Verification URL/ADDRESS 
+Smart Contract Verification URL/ADDRESS 
 https://mumbai.polygonscan.com/address/0x172c4309A7fa6D1AA9ea87Af45c76A2984e8f587#code
 
 *PicParadise*
