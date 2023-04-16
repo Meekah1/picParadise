@@ -18,6 +18,7 @@ import AddPhoto from './component/AddPhoto';
 import ViewPhoto from './component/ViewPhoto';
 import AboutUs from './pages/AboutUs';
 import PrivacyPolicy from './pages/Privacy';
+import RouteProtection from './component/RouteProtection';
 
 const { chains, provider, webSocketProvider } = configureChains(
   [polygonMumbai],
@@ -67,11 +68,13 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/Hero' exact element={<Hero />} />
-            <Route path='/viewPhoto' exact element={<ViewPhoto />} />
-            <Route path='/addPhoto' exact element={<AddPhoto />} />
-            <Route path='/aboutUs' exact element={<AboutUs />} />
-            <Route path='/privacy' exact element={<PrivacyPolicy />} />
+            <Route path='/' element={<RouteProtection />}>
+              <Route path='/Hero' exact element={<Hero />} />
+              <Route path='/viewPhoto' exact element={<ViewPhoto />} />
+              <Route path='/addPhoto' exact element={<AddPhoto />} />
+              <Route path='/aboutUs' exact element={<AboutUs />} />
+              <Route path='/privacy' exact element={<PrivacyPolicy />} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </RainbowKitProvider>
