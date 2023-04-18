@@ -166,14 +166,14 @@ const RecordGrid = ({ data, contract }) => {
             return (
               <GridItem
                 w={{ sm: '200px', md: '250px', lg: '400px' }}
-                key={dat[5]}
+                key={dat[4]}
               >
                 <RecordCard
                   id={data[0]}
                   title={dat[1]}
-                  price={dat[4]}
+                  // price={dat[4]}
                   description={dat[2]}
-                  imageSrc={dat[5]}
+                  imageSrc={dat[4]}
                   owner={dat[3]}
                   contract={contract}
                 />
@@ -217,7 +217,7 @@ const ViewPhoto = () => {
       isClosable: true,
     });
 
-  const CONTRACT_ADDRESS = '0x172c4309A7fa6D1AA9ea87Af45c76A2984e8f587';
+  const CONTRACT_ADDRESS = '0x7f5111C12bb16fa7C46D795eAc361DF10a3Bc84A';
 
   const provider = useProvider();
   const { data: signer } = useSigner({

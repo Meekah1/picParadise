@@ -14,7 +14,7 @@ import { create } from 'ipfs-http-client';
 import { useContract, useSigner, useProvider } from 'wagmi';
 import { optimism } from 'wagmi/chains';
 import ensRegistryABI from '../artifacts/contracts/picParadise.sol/picParadise.json';
-import { ethers } from 'ethers';
+// import { ethers } from 'ethers';
 import Header from './Header';
 
 const projectId = '2Nf04C3kIxNtYDBrJBWTpRhZbjG';
@@ -34,7 +34,7 @@ const client = create({
 const AddPhoto = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [price, setPrice] = useState('');
+  // const [price, setPrice] = useState('');
   const [image, setImage] = useState(null);
   // const [imageOwner, setImageOwner] = useState('');
 
@@ -53,7 +53,7 @@ const AddPhoto = () => {
       isClosable: true,
     });
 
-  const CONTRACT_ADDRESS = '0x172c4309A7fa6D1AA9ea87Af45c76A2984e8f587';
+  const CONTRACT_ADDRESS = '0x7f5111C12bb16fa7C46D795eAc361DF10a3Bc84A';
 
   const provider = useProvider();
   const { data: signer } = useSigner({
@@ -70,15 +70,15 @@ const AddPhoto = () => {
     try {
       const created = await client.add(image);
       const metadataURI = `https://ipfs.io/ipfs/${created.path}`;
-      const formattedPrice = ethers.utils.parseEther(price.toString());
-      console.log('hdhhgghvygvdyd', price, formattedPrice, description, title);
+      // const formattedPrice = ethers.utils.parseEther(price.toString());
+      console.log('hdhhgghvygvdyd', description, title);
 
-      await contract.addPhoto(title, description, formattedPrice, metadataURI);
+      await contract.addPhoto(title, description, metadataURI);
       successToast();
 
       setImage(null);
       setTitle('');
-      setPrice();
+      // setPrice();
       setDescription();
       // setImageOwner();
     } catch (error) {
@@ -132,14 +132,14 @@ const AddPhoto = () => {
             <Flex direction='column'>
               <FormLabel>Description</FormLabel>
               <Textarea
-                w={{ base: '100px', md: '200px', lg: '300px' }}
+                w={{ base: '160px', md: '300px', lg: '400px' }}
                 border='1px solid black'
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder='Enter description'
               />
             </Flex>
-            <Flex direction='column'>
+            {/* <Flex direction='column'>
               <FormLabel>Price</FormLabel>
               <Input
                 w={{ base: '100px', md: '160px', lg: '200px' }}
@@ -149,7 +149,7 @@ const AddPhoto = () => {
                 onChange={(e) => setPrice(e.target.value)}
                 placeholder='Enter price'
               />
-            </Flex>
+            </Flex> */}
           </Flex>
         </Stack>
         <Flex alignItems={'center'} justifyContent={'center'} gap={4}>
