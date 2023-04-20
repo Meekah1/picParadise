@@ -32,8 +32,8 @@ const Hero = () => {
             fontWeight={700}
             fontSize={{ base: '2xl', sm: '3xl', md: '5xl' }}
           >
-            Experience Link world of endless Photos with the ability to Upload,
-            View, and Buy Using Crypto!
+            Experience the world of endless Photos with the ability to Upload,
+            View, and Store your Pictures or Art in a Decentralized way!
           </Text>
         </Box>
         <Flex
